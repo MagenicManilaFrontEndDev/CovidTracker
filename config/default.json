@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://FrontEndDev:<password>@covidtracker-bdgec.azure.mongodb.net/test?retryWrites=true&w=majority"
+}
