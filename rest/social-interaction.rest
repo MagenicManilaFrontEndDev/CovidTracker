@@ -1,0 +1,32 @@
+
+
+### Get All
+GET http://localhost:5000/api/social-interactions
+
+### Get By Id
+GET http://localhost:5000/api/social-interactions/5ed5f4d958ae483e164a24e1
+
+### Insert 
+POST http://localhost:5000/api/social-interactions/
+Content-Type: application/json
+
+{
+  "name": "John Doe 2",
+  "date": "1/2/2020",
+  "hours": "2",
+  "isSocialDistancing" : "true"
+}
+
+### Delete By Id
+DELETE http://localhost:5000/api/social-interactions/5ed5f4d958ae483e164a24e1
+
+### Update 
+PUT http://localhost:5000/api/social-interactions/5ed5f4d058ae483e164a24e0
+Content-Type: application/json
+
+{
+  "name": "Mark Doe",
+  "date": "1/10/2020",
+  "hours": "1",
+  "isSocialDistancing" : "true"
+}

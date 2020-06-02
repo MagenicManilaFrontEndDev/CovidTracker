@@ -5,7 +5,7 @@ const { check, validationResult } = require('express-validator');
 const VisitedPlace = require('../../models/VisitedPlace');
 
 // @route   GET api/visited-places
-// @desc    Get all posts
+// @desc    Get all visited places
 router.get('/', async (req, res) => {
     try {
         const visitedPlaces = await VisitedPlace.find().sort({ date: -1 });
@@ -18,7 +18,6 @@ router.get('/', async (req, res) => {
 
 // @route   GET api/visited-places/:id
 // @desc    Get visited place by Id
-// @access  Private
 router.get('/:id', async (req, res) => {
     try {
         const visitedPlace = await VisitedPlace.findById(req.params.id);
@@ -49,9 +48,6 @@ router.post(
     ],
     async (req, res) => {
         const errors = validationResult(req);
-
-        console.log(req.body);
-
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
@@ -108,6 +104,11 @@ router.put(
         check('hours', 'Hours is required').not().isEmpty(),
     ],
     async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
         try {
             const { place, date, hours, isCrowded } = req.body;
 
